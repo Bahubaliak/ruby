@@ -1,3 +1,9 @@
+# Ensure Rails environment is loaded
+require_relative './config/environment'
+
+# Load the awesome_print gem if using it
+require 'awesome_print'
+
 count = 0
 rider_trip_hash = {}
 rider_ids = []

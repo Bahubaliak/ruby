@@ -38,3 +38,11 @@ Rider.where("free_days > ?", 0).find_in_batches(batch_size: 100) do |riders|
       end
     end
 end
+
+puts "========================================"
+puts "Stored Trip id's for #{count} riders"
+puts "=========================================="
+puts "riders who has free_days > 0 are #{ap rider_ids}"
+puts "======================================"
+puts "rider_trip_hash #{ap rider_trip_hash}"
+puts "======================================"

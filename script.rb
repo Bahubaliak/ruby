@@ -20,7 +20,6 @@ Rider.where("free_days > ?", 0).find_in_batches(batch_size: 100) do |riders|
               # free_days * 2 because free day is earned by completing two trips
     if requests.present?
       request_groups = requests.in_groups_of(2, false)
-  
       request_groups.each do |group|
         booking_ids = group.map { |request| request&.trip&.booking&.id }.compact
         trip_ids = group.map { |request| request&.trip&.id }.compact
@@ -33,10 +32,10 @@ Rider.where("free_days > ?", 0).find_in_batches(batch_size: 100) do |riders|
         trip_hash["booking_ids"] = rider_booking_arr.push(booking_ids)
   
         rider_trip_hash[rider_key] = trip_hash
-  
         count = count + 1
       end
     end
+  end
 end
 
 puts "========================================"
